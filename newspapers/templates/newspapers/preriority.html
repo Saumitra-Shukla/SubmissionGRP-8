@@ -1,0 +1,18 @@
+{% extends "main.html" %}
+{% block content %}
+
+                <div class="container row mx-auto">
+                    <div class="col-12 my-2 border bg-white text-dark rounded">
+                        <h4 class="text-center d-block my-3">Currated List of News only for you!!</h4>
+                    </div>
+
+                      {% for new in news %}
+                        <div class="col-12 text-justify bg-white text-dark border rounded mt-2">
+                        <h4 class="ml-1 d-block my-3">{{new.heading}}</h4>
+                        <P class="container">{{new.article|truncatechars:"250"}}</P>
+                        <a href="{% url 'newspapers:news_detail' pk=new.pk %}" class="d-inline-block mb-2 btn btn-outline-info float-right">Read More...</a>
+
+                    </div>
+                      {% endfor %}
+                </div>
+{% endblock %}
